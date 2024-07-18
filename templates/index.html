@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Price Tracker</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Price Tracker</h1>
+    <form id="search-form" method="POST" action="/">
+        <input type="text" id="item-name" name="item_name" placeholder="Enter item name">
+        <button type="submit">Search</button>
+    </form>
+    <div id="results">
+        {% if results %}
+            {% for item in results %}
+                <p>{{ item.item_name }} - {{ item.price }} KES - <a href="{{ item.link }}" target="_blank">Buy Now</a> ({{ item.website }})</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>
